@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 15:58:28 by dev               #+#    #+#             */
-/*   Updated: 2023/02/13 18:44:42 by dwawzyni         ###   ########.fr       */
+/*   Created: 2023/02/13 16:23:42 by dwawzyni          #+#    #+#             */
+/*   Updated: 2023/02/13 18:52:20 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../push_swap.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-
-typedef struct s_storage
+void rotate(int *tab,int ac)
 {
-    int n;
-    int tab[];
-}t_storage;
+    int	i;
+	int	t;
+	int	j;
 
-
-void init(t_storage * storage);
-// void decimalToBinary(int num);
-
-void rotate(int *tab,int ac);
-
-#endif
+	i = 0;
+	j = tab[i];
+	while (i < ac)
+	{
+		t = tab[i];
+		tab[i] = tab[i + 1];
+		tab[i + 1] = t;
+		i++;
+	}
+	tab[i] = j;
+	write(1,"ra\n",3);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:34:57 by dev               #+#    #+#             */
-/*   Updated: 2022/11/23 17:17:42 by dev              ###   ########.fr       */
+/*   Updated: 2023/02/13 18:51:27 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,20 @@ int get_max(char *array)
 int main(int ac, char **av)
 {
     (void)ac;
-    t_storage storage;
-    init(storage);
+    int i;
+    char **temp;
+    int stack_a[500];
+    //int stack_b[500];
+
+    i = -1;
+    temp = ft_split(av[1],' ');
+    while (temp[++i])
+    {
+        stack_a[i] = ft_atoi(temp[i]);
+    }
+    rotate(stack_a,3);
+    printf("%d",stack_a[0]);
     
-    char *array = av[1];
-    
-    printf("%d",storage.n);
-    printf("%d",get_max(array));
+    // printf("%d",count_array(array));
+    // printf("\n%d",get_max(array));
 }
