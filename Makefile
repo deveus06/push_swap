@@ -6,7 +6,7 @@ RM = @rm -f
 INCLUDE = -I include/
 
 SRC_DIR = src/
-SRC_FILES =	main.c
+SRC_FILES =	main.c utils.c moves.c algo.c for_radix.c
 
 OBJ_DIR = objs/
 OBJS = ${addprefix ${OBJ_DIR}, $(SRC_FILES:.c=.o)}

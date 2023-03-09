@@ -3,81 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:34:57 by dev               #+#    #+#             */
-/*   Updated: 2023/02/06 13:08:34 by dev              ###   ########.fr       */
-/*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int count_array(char *array)
+void printstack(t_storage * stack)
 {
-    t_storage storage;
-    char **stack;
-    int i;
-    
-    i = 0;
-    stack = ft_split(array,' ');
-    while(stack[i] != NULL)
-        i++;
-    
-    storage.n = i;
-    return(i);
-}
+    int i = 0;
 
-// void return_int_tab(char *array,t_storage storage)
-// {
-//     int i;
-//     char **stack;
-//     int tab[count_array(array)];
-    
-//     i = 1;
-//     stack = ft_split(array,' ');
-//     while(stack[i] != NULL)
-//     {
-//         tab[i] = ft_atoi(stack[i]);
-//         storage.tab[i] = tab[i];
-//         i++;
-//     }     
-// }
-
-int get_max(char *array)
-{
-    int max;
-    int i;
-    char **stack;
-   int tab[count_array(array)];
-    
-    i = 0;
-    stack = ft_split(array,' ');
-    while(stack[i] != NULL)
+    while (i < stack->size)
     {
-        tab[i] = ft_atoi(stack[i]);
-        i++;
-    }    
-    max = tab[0];
-    i = 1;
-    while(i < count_array(array))
-    {
-        if(tab[i] > max)
-            max = tab[i];
+        printf("%d\n", stack->tab[i]);
         i++;
     }
+}
+
+int get_max(t_storage * a)
+{
+    int i;
+    int max;
+
+    max = 0;
+    i = 0;
+    while (i < a->size)
+    {
+        if (a->tab[i] > max)
+            max = a->tab[i];
+        i++;
+    }
+    a->max = max;
     return(max);
+
 }
 
 int main(int ac, char **av)
 {
     (void)ac;
-    t_storage storage;
-    init(storage);
+    int i;
+    char **temp;
+    t_storage storage_a;
+    t_storage storage_b;
+
+
+    int stack_a[500];
+    int stack_b[500];
+    int stack_t[500];
+
+
+    ft_memset(stack_a, 0, sizeof(stack_a));
+    ft_memset(&storage_a, 0, sizeof(storage_a));
+    ft_memset(&storage_b, 0, sizeof(storage_b));
+    storage_a.tab = stack_a;
+    storage_b.tab = stack_b;
+
     
-    char *array = av[1];
+    i = -1;
+    if (ac == 2)
+    {
+    temp = ft_split(av[1],' ');
+    while (temp[++i])
+    {
+        stack_a[i] = ft_atoi(temp[i]);
+        stack_b[i] = 0;
+        stack_t[i] = stack_a[i];
+    }
+    storage_a.size = i;
+    }
+    else
+    {
+        while (av[++i + 1])
+        {
+            storage_a.tab[i] = ft_atoi(av[i + 1]);
+            
+        }
+        storage_a.size = ac - 1;
+    }
+    get_max(&storage_a);
+	radix_sort(storage_a.tab, storage_b.tab, i);
+
+    printstack(&storage_a);
+
+
+    // rotate(storage_a.tab, storage_a.size, "ra\n");
+
+    // printstack(&storage_a);
+    // printstack(&storage_a);
     
-    printf("%d",storage.n);
-    printf("%d",get_max(array));
+
+    // freetmp(temp);
+    // ft_index(stack_a,stack_t,i);
+    
+    // sort5(stack_a,stack_b,5);
+    //  printf("--%d\n",stack_a[0]);
+    //  printf("--%d\n",stack_a[1]);
+    //  printf("--%d\n",stack_a[2]);
+    //  printf("--%d\n",stack_a[3]);
+    //  printf("--%d\n",stack_a[4]);
+     //printf("%d\n",stack_a[2]);
+    
+    // printf("%d",count_array(array));
+    // printf("\n%d",get_max(array));
 }
