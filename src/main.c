@@ -45,14 +45,14 @@ int main(int ac, char **av)
 {
     (void)ac;
     int i;
-    char **temp;
+    //char **temp;
     t_storage storage_a;
     t_storage storage_b;
 
 
     int stack_a[500];
     int stack_b[500];
-    int stack_t[500];
+   // int stack_t[500];
 
 
     ft_memset(stack_a, 0, sizeof(stack_a));
@@ -63,49 +63,26 @@ int main(int ac, char **av)
 
     
     i = -1;
-    if (ac == 2)
-    {
-    temp = ft_split(av[1],' ');
-    while (temp[++i])
-    {
-        stack_a[i] = ft_atoi(temp[i]);
-        stack_b[i] = 0;
-        stack_t[i] = stack_a[i];
-    }
-    storage_a.size = i;
-    }
-    else
-    {
+    // if (ac == 2)
+    // {
+    //     temp = ft_split(av[1],' ');
+    //     while (temp[++i])
+    //     {
+    //         stack_a[i] = ft_atoi(temp[i]);
+    //         stack_b[i] = 0;
+    //         stack_t[i] = stack_a[i];
+    //     }
+    //     storage_a.size = i;
+    // }
+    // else
+    // {
         while (av[++i + 1])
         {
             storage_a.tab[i] = ft_atoi(av[i + 1]);
-            
         }
         storage_a.size = ac - 1;
-    }
+    // }
     get_max(&storage_a);
 	radix_sort(storage_a.tab, storage_b.tab, i);
 
-    printstack(&storage_a);
-
-
-    // rotate(storage_a.tab, storage_a.size, "ra\n");
-
-    // printstack(&storage_a);
-    // printstack(&storage_a);
-    
-
-    // freetmp(temp);
-    // ft_index(stack_a,stack_t,i);
-    
-    // sort5(stack_a,stack_b,5);
-    //  printf("--%d\n",stack_a[0]);
-    //  printf("--%d\n",stack_a[1]);
-    //  printf("--%d\n",stack_a[2]);
-    //  printf("--%d\n",stack_a[3]);
-    //  printf("--%d\n",stack_a[4]);
-     //printf("%d\n",stack_a[2]);
-    
-    // printf("%d",count_array(array));
-    // printf("\n%d",get_max(array));
 }
