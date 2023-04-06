@@ -6,18 +6,13 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:49:02 by dev               #+#    #+#             */
-/*   Updated: 2023/03/01 10:57:06 by dev              ###   ########.fr       */
+/*   Updated: 2023/04/05 15:33:59 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../libft/libft.h"
 #include "../push_swap.h"
-
-void init(t_storage * storage)
-{
-    ft_memset(storage,0,sizeof(t_storage));
-}
+#include <stdio.h>
 
 void	ft_putstr(char *str)
 {
@@ -38,36 +33,40 @@ int	smallest(int *str, int c, int len)
 	{
 		if (j > str[i])
 			j = str[i];
-		i++;	
+		i++;
 	}
 	return (j - c);
 }
 
-void	ft_index(int *str_a, int *str_t, int len)
+int	check_int_range(char *av)
+{
+	int		t;
+	char	*r;
+
+	t = ft_atoi(av);
+	r = ft_itoa(t);
+	if (ft_strncmp(av, r, 1024))
+	{
+		free(r);
+		return (1);
+	}
+	free(r);
+	return (0);
+}
+
+int	ft_is_sorted(int *str, int argc)
 {
 	int	i;
-	int	j;
-	int	index;
 
 	i = 0;
-	index = 1;
-	while (i < len)
+	while (i < argc - 1)
 	{
-		j = 0;
-		while (j < len)
+		if (str[i] > str[i + 1])
 		{
-			if (str_a[i] > str_a[j])
-				index++;
-			j++;
+			printf("%d < %d\n", str[i], str[i + 1]);
+			return (0);
 		}
-		str_t[i] = index;
-		index = 1;
 		i++;
 	}
-	i = 0;
-	while (i < len)
-	{
-		str_a[i] = str_t[i];
-		i++;
-	}
+	return (1);
 }

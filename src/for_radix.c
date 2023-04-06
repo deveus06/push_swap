@@ -6,22 +6,11 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:05:58 by dev               #+#    #+#             */
-/*   Updated: 2023/03/09 15:07:23 by dev              ###   ########.fr       */
+/*   Updated: 2023/03/30 08:39:04 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	ft_findn(int *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == 0)
-		i++;
-	return (str[i]);
-}
-
 
 int	ft_maxb(int len)
 {
@@ -34,7 +23,6 @@ int	ft_maxb(int len)
 		++maxb;
 	return (maxb);
 }
-
 
 int	ft_rotate(int *str, int argc)
 {
