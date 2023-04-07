@@ -5,7 +5,9 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 17:34:57 by dev               #+#    #+#             */
+/*   Created: 2023/04/06 15:41:58 by dwawzyni          #+#    #+#             */
+/*   Updated: 2023/04/06 21:25:29 by dwawzyni         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
@@ -36,7 +38,9 @@ int	check_if_letter(char *str)
 		if (str[0] == '-' && str[1])
 			continue ;
 		else if (!ft_isdigit(str[i]))
+		{
 			return (1);
+		}
 	}
 	return (0);
 }
@@ -72,13 +76,12 @@ int	get_max(t_storage *a)
 
 int	main(int ac, char **av)
 {
-	int i;
-	t_storage storage_a;
-	t_storage storage_b;
-
-	int stack_a[500];
-	int stack_b[500];
-	char **temp;
+	int			i;
+	int			stack_a[500];
+	int			stack_b[500];
+	char		**temp;
+	t_storage	storage_a;
+	t_storage	storage_b;
 
 	ft_memset(stack_a, 0, sizeof(stack_a));
 	ft_memset(&storage_a, 0, sizeof(storage_a));
@@ -90,14 +93,14 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		i = 0;
-		temp = ft_split(av[1],' ');
-		while(temp[i])
+		temp = ft_split(av[1], ' ');
+		while (temp[i])
 		{
 			storage_a.tab[i] = ft_atoi(temp[i]);
 			i++;
 		}
 	}
-	else if(ac > 2)
+	else if (ac > 2)
 	{
 		while (av[++i + 1])
 		{
@@ -111,8 +114,8 @@ int	main(int ac, char **av)
 		}
 		i = ac - 1;
 	}
-	if(ft_is_sorted(storage_a.tab, i))
-		return(0);
+	if (ft_is_sorted(storage_a.tab, i))
+		return (0);
 	storage_a.size = ac - 1;
 	get_max(&storage_a);
 

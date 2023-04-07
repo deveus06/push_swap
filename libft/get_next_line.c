@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:35:07 by jmorneau          #+#    #+#             */
-/*   Updated: 2022/11/05 18:30:11 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:35:13 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,27 @@
 // 	return (buffer);
 // }
 
+// char	*get_next_line(int fd)
+// {
+// 	int		i;
+// 	int		rd;
+// 	char	character;
+// 	char	*buffer;
 
-char *get_next_line(int fd)
-{
-    int 	i = 0;
-    int 	rd = 0;
-    char	character;
-    char 	*buffer = malloc(10000);
-
-    while ((rd = read(fd, &character, 1)) > 0)
-    {
-        buffer[i++] = character;
-        if (character == '\n')
-            break;
-    }
-    if ((!buffer[i - 1] && !rd) || rd == -1)
-    {
-        free(buffer);
-        return (NULL);
-    }
-    buffer[i] =  '\0';
-    return(buffer);
-}
-
+// 	i = 0;
+// 	rd = 0;
+// 	buffer = malloc(10000);
+// 	while ((rd = read(fd, &character, 1)) > 0)
+// 	{
+// 		buffer[i++] = character;
+// 		if (character == '\n')
+// 			break ;
+// 	}
+// 	if ((!buffer[i - 1] && !rd) || rd == -1)
+// 	{
+// 		free(buffer);
+// 		return (NULL);
+// 	}
+// 	buffer[i] = '\0';
+// 	return (buffer);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:49:02 by dev               #+#    #+#             */
-/*   Updated: 2023/04/05 15:33:59 by dev              ###   ########.fr       */
+/*   Updated: 2023/04/06 21:22:58 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	check_int_range(char *av)
 	int		t;
 	char	*r;
 
+	if (!ft_strncmp(av, "-0", 1024))
+		return (0);
 	t = ft_atoi(av);
 	r = ft_itoa(t);
 	if (ft_strncmp(av, r, 1024))
@@ -62,10 +64,7 @@ int	ft_is_sorted(int *str, int argc)
 	while (i < argc - 1)
 	{
 		if (str[i] > str[i + 1])
-		{
-			printf("%d < %d\n", str[i], str[i + 1]);
 			return (0);
-		}
 		i++;
 	}
 	return (1);

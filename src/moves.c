@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:23:42 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/03/30 08:38:53 by dev              ###   ########.fr       */
+/*   Updated: 2023/04/06 21:22:12 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	rotate(int *tab, int ac, char *c)
 		tab[i + 1] = t;
 		i++;
 	}
-	printf("%s", c);
+	ft_putchar(c);
 	tab[i] = j;
 	return (1);
 }
@@ -37,14 +37,17 @@ int	rotate(int *tab, int ac, char *c)
 int	rev_rotate(int *str, int ac, char *c)
 {
 	int	tmp;
+	int	i;
 
 	tmp = str[ac - 1];
-	for (int i = ac - 1; i > 0; i--)
+	i = ac - 1;
+	while (i < 0)
 	{
 		str[i] = str[i - 1];
+		i--;
 	}
 	str[0] = tmp;
-	printf("%s", c);
+	ft_putchar(c);
 	return (1);
 }
 
@@ -81,9 +84,11 @@ int	push(t_storage *stack_a, t_storage *stack_b, char *c)
 	int	i;
 
 	tmp = stack_b->tab[stack_b->size - 1];
-	for (int i = stack_b->size; i > 0; i--)
+	i = stack_b->size;
+	while (i > 0)
 	{
 		stack_b->tab[i] = stack_b->tab[i - 1];
+		i--;
 	}
 	stack_b->tab[0] = stack_a->tab[0];
 	stack_b->size++;
@@ -96,6 +101,6 @@ int	push(t_storage *stack_a, t_storage *stack_b, char *c)
 		i++;
 	}
 	stack_a->size--;
-	printf("%s", c);
+	ft_putstr(c);
 	return (1);
 }

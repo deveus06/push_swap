@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo->c                                             :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student->42->fr>                    +#+  +:+      
-	+#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 13:20:21 by dev               #+#    #+#             */
-/*   Updated: 2023/03/08 17:47:21 by dev              ###   ########->fr       */
+/*   Created: 2023/04/06 15:38:29 by dwawzyni          #+#    #+#             */
+/*   Updated: 2023/04/06 20:45:13 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include"../push_swap.h"
 
 int	sort3(int *str)
 {
@@ -47,11 +46,11 @@ int	sort5(t_storage *stack_a, t_storage *stack_b)
 
 int	radix_sort(int *str_a, int *str_b, int len)
 {
-	int i;
-	int j;
-	int k;
-	int max;
-	int u;
+	int	i;
+	int	j;
+	int	k;
+	int	max;
+	int	u;
 
 	i = -1;
 	j = 0;
