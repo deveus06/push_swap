@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:58 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/13 21:06:02 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/13 22:21:26 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ int	check_dobles(char **str)
 	while (str[i])
 	{
 		if (!ft_strncmp(str[0], str[i], 1024))
+		{
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -70,6 +72,8 @@ int	check_if_letter(char *str)
 			continue ;
 		else if (!ft_isdigit(str[i]))
 		{
+			printf("%s\n", str);
+
 			return (1);
 		}
 	}
@@ -105,104 +109,91 @@ int	get_max(t_storage *a)
 	return (max);
 }
 
-int	main(int ac, char **av)
+
+int check_error2(char **str)
 {
-	int			i;
-	int			stack_a[500];
-	int			stack_b[500];
-	int 		sorted_array[500];
-	char		**temp = NULL;
-	int			temp_a[500] = {0};
-	t_storage	storage_a;
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (check_if_letter(str[i]) || !check_dobles(str + i)
+			|| check_int_range(str[i]))
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int check_error(char **av, int ac, int temp_a[500])
+{
+	char **temp;
+	int i;
 	
-	t_storage	storage_b;
-
-
-	(void)sorted_array;
-	ft_memset(stack_a, 0, sizeof(stack_a));
-	ft_memset(stack_b, 0, sizeof(stack_a));
-	ft_memset(&storage_a, 0, sizeof(storage_a));
-	ft_memset(&storage_b, 0, sizeof(storage_b));
-
-	storage_a.tab = stack_a;
-	storage_b.tab = stack_b;
-
-	i = -1;
-
-	// ------------- test ---------------------
-	// if (ac > 0 && ac <= 500)
-	// {
-		
-	// 	if(ac == 2)
-	// 		temp = ft_split(av[1], ' ');
-	// 	else
-	// 		while(av[++i + 1])
-	// 			temp[i] = (av[i + 1]);
-	// 	i = -1;
-	// 	while(temp[++i])
-	// 	{
-	// 		if (check_if_letter(temp[i]) || !check_dobles(temp + i)
-	// 			|| check_int_range(temp[i]))
-	// 			{
-	// 				ft_putstr_fd("Error\n",2);
-	// 				return(1);
-	// 			}
-	// 			storage_a.tab[i] = ft_atoi(temp[i]);
-	// 		}
-	// 	storage_a.size = i;
-	// }
-	// else 
-	// {
-	// 	ft_putstr_fd("Error \n",2);
-	// 	return(0);
-	// }
-
-	//---------- test -------------------
-	
+	i = 0;
 	if (ac == 2)
 	{
-		i = 0;
-		temp = ft_split(av[2], ' ');
+		temp = ft_split(av[1], ' ');
 		while (temp[i])
 		{
 			temp_a[i] = ft_atoi(temp[i]);
 			i++;
 		}
-	}
-	else if (ac > 2)
-	{
-		while (av[++i + 1])
-		{
-			if (i >= 500)
-			{
-				ft_putstr_fd("noob\n", 2);
-				return (1);
-			}
-			if (check_if_letter(av[i + 1]) || !check_dobles(av + i + 1)
-				|| check_int_range(av[i + 1]))
-			{
-				ft_putstr_fd("Error\n", 2);
-				return (1);
-			}
-				temp_a[i] = ft_atoi(av[i + 1]);
-		}
-	}
 
-	storage_a.size = ac - 1;
+		// free temp ici 
+		return(check_error2(temp));
+	}
+	else
+	{
+		while (av[i + 1])
+		{
+			temp_a[i] = ft_atoi(av[i + 1]);
+			i++;
+		}	
+		return(check_error2(av + 1));
+	}
+}
+
+int len_mf(char *mf)
+{
+	int i = 0;
+	int count = 1;
+
+	while (mf[i])
+	{
+		if (mf[i] == ' ')
+			count++;
+		i++;
+	}
+	return (count);	
+}
+
+int	main(int ac, char **av)
+{
+	static int 			sorted_array[500] = {0};
+	static int			temp_a[500] = {0};
+	t_storage			storage_a;	
+
+	ft_memset(&storage_a, 0, sizeof(storage_a));
+	
+	if (check_error(av, ac, temp_a))
+		return (0);
+
+	storage_a.size = (ac > 2) ? ac - 1 : len_mf(av[1]);
 	hash_array(&storage_a, temp_a);
 	cpy_int(sorted_array, &storage_a);
 	bubble_sort(sorted_array, storage_a.size);
 	 if (ac == 4)
-		sort3(stack_a);
+		sort3(storage_a.tab);
 	 else if (ac == 6)
-		 sort5(&storage_a, &storage_b);
-	else if (ac < 101)
+		 sort5(&storage_a);
+	else if (ac <= 101)
 		sort_chunk(sorted_array,&storage_a, 5);
 	else
 		sort_chunk(sorted_array,&storage_a, 11);
-		
-	for(int32_t i = 0;i < ac - 1;i++)
-	{
-		printf("%d\n",  storage_a.tab[i]);
-	}
+		for(int i = 0; i < storage_a.size; i++)
+			printf("%d\n", storage_a.tab[i]);
 }

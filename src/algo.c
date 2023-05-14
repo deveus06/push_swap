@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:38:29 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/04/24 14:48:34 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/13 21:24:04 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,23 @@ int	sort3(int *str)
 	return (stack);
 }
 
-int	sort5(t_storage *stack_a, t_storage *stack_b)
+int	sort5(t_storage *stack_a)
 {
 	int	small;
 	int	stack;
+	t_storage stack_b;
 
 	stack = 0;
-	while (stack_b->size != 2)
+	while (stack_b.size != 2)
 	{
 		small = smallest(stack_a->tab, 0, stack_a->size);
 		while (stack_a->tab[0] != small)
 			stack += rotate(stack_a->tab, stack_a->size, "ra\n");
-		stack += push(stack_a, stack_b, "pb\n");
+		stack += push(stack_a, &stack_b, "pb\n");
 	}
 	stack += sort3(stack_a->tab);
-	stack += push(stack_b, stack_a, "pa\n");
-	stack += push(stack_b, stack_a, "pa\n");
+	stack += push(&stack_b, stack_a, "pa\n");
+	stack += push(&stack_b, stack_a, "pa\n");
 	return (stack);
 }
 

@@ -31,11 +31,7 @@ int	sort_chunk(int *sorted_tab, t_storage *a, int woula)
 	int k = 0;
 	int len = a->size / woula;
 	int cpy = 0;
-
-	int stack_b[500] = { 0 };
 	t_storage b = { 0 };
-
-	b.tab = stack_b;
 	
 	j = 1;
 

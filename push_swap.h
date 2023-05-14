@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:28 by dev               #+#    #+#             */
-/*   Updated: 2023/04/24 14:45:44 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/13 22:03:11 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_storage
 {
 	int	size;
-	int	*tab;
+	int	tab[500];
 	int	max;
 }		t_storage;
 
@@ -44,7 +44,7 @@ int		ft_rotate(int *str, int argc);
 
 //algos
 int		sort3(int *str);
-int		sort5(t_storage *stack_a, t_storage *stack_b);
+int		sort5(t_storage *stack_a);
 void bubble_sort(int *arr, int n);
 void	ft_switch(int *x, int *y);
 int	sort_chunk(int *sorted_tab, t_storage *a, int woula);
