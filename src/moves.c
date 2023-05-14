@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:23:42 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/04/06 21:22:12 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:52:12 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	rotate(int *tab, int ac, char *c)
 	int	j;
 
 	i = 0;
-	j = tab[i];
-	while (tab[i] == 0)
-		i++;
+	j = tab[0];
 	while (i < ac - 1)
 	{
 		t = tab[i];
@@ -29,7 +27,7 @@ int	rotate(int *tab, int ac, char *c)
 		tab[i + 1] = t;
 		i++;
 	}
-	ft_putchar(c);
+	ft_putstr(c);
 	tab[i] = j;
 	return (1);
 }
@@ -37,17 +35,20 @@ int	rotate(int *tab, int ac, char *c)
 int	rev_rotate(int *str, int ac, char *c)
 {
 	int	tmp;
+	int t;
 	int	i;
 
 	tmp = str[ac - 1];
 	i = ac - 1;
-	while (i < 0)
+	while (i > 0)
 	{
+		t = str[i];
 		str[i] = str[i - 1];
+		str[i-1] = t;
 		i--;
 	}
 	str[0] = tmp;
-	ft_putchar(c);
+	ft_putstr(c);
 	return (1);
 }
 
@@ -80,10 +81,8 @@ int	swap(int *str, int ac)
 
 int	push(t_storage *stack_a, t_storage *stack_b, char *c)
 {
-	int	tmp;
 	int	i;
 
-	tmp = stack_b->tab[stack_b->size - 1];
 	i = stack_b->size;
 	while (i > 0)
 	{
@@ -92,13 +91,12 @@ int	push(t_storage *stack_a, t_storage *stack_b, char *c)
 	}
 	stack_b->tab[0] = stack_a->tab[0];
 	stack_b->size++;
+
 	i = 0;
 	while (i < stack_a->size - 1)
 	{
-		tmp = stack_a->tab[i];
 		stack_a->tab[i] = stack_a->tab[i + 1];
-		stack_a->tab[i + 1] = tmp;
-		i++;
+		++i;
 	}
 	stack_a->size--;
 	ft_putstr(c);

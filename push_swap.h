@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:28 by dev               #+#    #+#             */
-/*   Updated: 2023/04/05 13:41:02 by dev              ###   ########.fr       */
+/*   Updated: 2023/04/24 14:45:44 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ int		ft_rotate(int *str, int argc);
 //algos
 int		sort3(int *str);
 int		sort5(t_storage *stack_a, t_storage *stack_b);
-int		radix_sort(int *str_a, int *str_b, int len);
+void bubble_sort(int *arr, int n);
+void	ft_switch(int *x, int *y);
+int	sort_chunk(int *sorted_tab, t_storage *a, int woula);
+int sort_b(t_storage *a,t_storage *b);
 
-void	printstack(t_storage *stack);
+void	print_stacks(t_storage a, t_storage b);
+
 #endif

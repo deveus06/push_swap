@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:38:29 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/04/06 20:45:13 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:48:34 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	sort3(int *str)
 		stack += rotate(str, 3, "ra\n");
 	else if (str[1] > str[0] && str[1] > str[2])
 		stack += rev_rotate(str, 3, "rra\n");
-	stack += swap(str, 2);
+	if(str[1]< str[0])
+		stack += swap(str, 2);
 	return (stack);
 }
 
@@ -44,31 +45,14 @@ int	sort5(t_storage *stack_a, t_storage *stack_b)
 	return (stack);
 }
 
-int	radix_sort(int *str_a, int *str_b, int len)
+void bubble_sort(int *arr, int n)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	max;
-	int	u;
-
-	i = -1;
-	j = 0;
-	u = 0;
-	max = ft_maxb(len);
-	while (++i < max)
-	{
-		while (j++ < len)
-		{
-			k = str_a[i];
-			if (((k >> i)) & 1)
-				u += ft_rotate(str_a, len - 1);
-			else
-				u += push2(str_a, str_b, len, "pb\n");
-		}
-		j = 0;
-		while (str_b[len - 1] != 0)
-			u += push2(str_b, str_a, len, "pa\n");
-	}
-	return (u);
+    int i, j;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                ft_switch(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
 }
