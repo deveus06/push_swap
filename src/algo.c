@@ -6,13 +6,13 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:38:29 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/13 21:24:04 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/16 17:02:39 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../push_swap.h"
 
-int	sort3(int *str)
+int	sort3(int str[500])
 {
 	int	stack;
 
@@ -21,7 +21,7 @@ int	sort3(int *str)
 		stack += rotate(str, 3, "ra\n");
 	else if (str[1] > str[0] && str[1] > str[2])
 		stack += rev_rotate(str, 3, "rra\n");
-	if(str[1]< str[0])
+	if(str[1]<str[0])
 		stack += swap(str, 2);
 	return (stack);
 }
@@ -30,7 +30,7 @@ int	sort5(t_storage *stack_a)
 {
 	int	small;
 	int	stack;
-	t_storage stack_b;
+	t_storage stack_b = {0};
 
 	stack = 0;
 	while (stack_b.size != 2)
@@ -56,4 +56,23 @@ void bubble_sort(int *arr, int n)
             }
         }
     }
+}
+
+void sort2(int str[2])
+{
+	if(str[1]<str[0])
+		swap(str,2);
+}
+
+void sort4(t_storage *stack_a)
+{
+	t_storage b = {0};
+	int j;
+	
+	j = smallest(stack_a->tab,0,stack_a->size);
+	while(stack_a->tab[0] != j)
+		rotate(stack_a->tab,4,"ra\n");
+	push(stack_a,&b,"pb\n");
+	sort3(stack_a->tab);
+	push(&b,stack_a,"pa\n");
 }

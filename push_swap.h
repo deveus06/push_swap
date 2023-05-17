@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:28 by dev               #+#    #+#             */
-/*   Updated: 2023/05/13 22:03:11 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/17 17:09:47 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ typedef struct s_storage
 void	ft_putstr(char *str);
 int		get_max(t_storage *a);
 int		smallest(int *str, int c, int len);
-void	ft_index(int *str_a, int *str_t, int len);
-int		ft_maxb(int len);
 int		check_int_range(char *av);
 int	ft_is_sorted(int *str, int argc);
+void cpy_int(int *sorted, t_storage *a);
+int len_mf(char *mf);
+int	get_max(t_storage *a);
+void	hash_array(t_storage *a, int *temp);
 
 //moves
 int		rotate(int *tab, int ac, char *c);
@@ -38,18 +40,14 @@ int		rev_rotate(int *str, int ac, char *c);
 int		swap(int *str, int ac);
 int		push(t_storage *stack_a, t_storage *stack_b, char *c);
 
-//for radix
-int		push2(int *strA, int *strB, int argc, char *c);
-int		ft_rotate(int *str, int argc);
-
 //algos
-int		sort3(int *str);
+int		sort3(int str[500]);
 int		sort5(t_storage *stack_a);
+void sort2(int str[2]);
+void sort4(t_storage *stack_a);
 void bubble_sort(int *arr, int n);
 void	ft_switch(int *x, int *y);
 int	sort_chunk(int *sorted_tab, t_storage *a, int woula);
 int sort_b(t_storage *a,t_storage *b);
-
-void	print_stacks(t_storage a, t_storage b);
 
 #endif

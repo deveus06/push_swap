@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:23:42 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/04/17 17:52:12 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/15 17:23:17 by dev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,12 @@ int	swap(int *str, int ac)
 
 	i = ac;
 	i = 0;
-	if (str[i] && str[i + 1] && str[i] > str[i + 1])
-	{
 		t = str[i];
 		str[i] = str[i + 1];
 		str[i + 1] = t;
 		write(1, "sa\n", 3);
+		
 		return (1);
-	}
-	return (0);
 }
 
 int	push(t_storage *stack_a, t_storage *stack_b, char *c)

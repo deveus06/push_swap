@@ -2,26 +2,6 @@
 
 
 int sort_b(t_storage *a,t_storage *b);
-// DEBUG function to print contents of stacks
-void	print_stacks(t_storage a, t_storage b)
-{
-	usleep(200000);
-	printf("\e[1;1H\e[2J");
-	printf("  A | B  \n");
-	printf("---------\n");
-	for (int i = 0; i < 25; ++i)
-	{
-		if (i < a.size)
-			printf(" %2i |", a.tab[i]);
-		else
-			printf("  - |");
-		if (i < b.size)
-			printf(" %-2i \n", b.tab[i]);
-		else
-			printf(" -  \n");
-	}
-	return ;
-}
 
 int	sort_chunk(int *sorted_tab, t_storage *a, int woula)
 {
