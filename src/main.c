@@ -6,7 +6,7 @@
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:58 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/17 18:57:34 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:16:03 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	check_error2(char **str)
 		}
 		i++;
 	}
+	if(i < 2)
+			return (1);
 	return (0);
 }
 

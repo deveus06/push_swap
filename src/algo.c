@@ -6,7 +6,7 @@
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:38:29 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/17 20:23:28 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:37:06 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	sort5(t_storage *stack_a)
 	
 	int i = 2;
 	stack = 0;
+	small = 1;
 	while (stack_b.size != 2)
 	{
-		small = smallest(stack_a->tab, 0, stack_a->size);
-		while (stack_a->tab[0] != small)
+		while (stack_a->tab[0] > small)
 		{
 			if(i <= stack_a->size / 2)
 				stack += rotate(stack_a->tab, stack_a->size, "ra\n");
@@ -47,6 +47,8 @@ int	sort5(t_storage *stack_a)
 		stack += push(stack_a, &stack_b, "pb\n");
 	}
 	stack += sort3(stack_a->tab);
+	if (stack_b.tab[0] < stack_b.tab[1])
+		rotate(stack_b.tab, stack_b.size, "rb\n");
 	stack += push(&stack_b, stack_a, "pa\n");
 	stack += push(&stack_b, stack_a, "pa\n");
 	return (stack);
