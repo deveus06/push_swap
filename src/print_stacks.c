@@ -55,10 +55,7 @@ int sort_b(t_storage *a,t_storage *b)
 	{
 		i = 0;
 		while(b->tab[i] != b->size - 1)
-		{
-			printf("----%d\n",b->tab[i]);
 		 	i++;
-		}
 		cpy = b->tab[i];
 		if(i < b->size / 2)
 			while(b->tab[0] != cpy)

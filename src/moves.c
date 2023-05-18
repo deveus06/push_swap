@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:23:42 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/15 17:23:17 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/17 18:57:13 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	rotate(int *tab, int ac, char *c)
 int	rev_rotate(int *str, int ac, char *c)
 {
 	int	tmp;
-	int t;
+	int	t;
 	int	i;
 
 	tmp = str[ac - 1];
@@ -44,7 +44,7 @@ int	rev_rotate(int *str, int ac, char *c)
 	{
 		t = str[i];
 		str[i] = str[i - 1];
-		str[i-1] = t;
+		str[i - 1] = t;
 		i--;
 	}
 	str[0] = tmp;
@@ -68,12 +68,11 @@ int	swap(int *str, int ac)
 
 	i = ac;
 	i = 0;
-		t = str[i];
-		str[i] = str[i + 1];
-		str[i + 1] = t;
-		write(1, "sa\n", 3);
-		
-		return (1);
+	t = str[i];
+	str[i] = str[i + 1];
+	str[i + 1] = t;
+	write(1, "sa\n", 3);
+	return (1);
 }
 
 int	push(t_storage *stack_a, t_storage *stack_b, char *c)
@@ -88,7 +87,6 @@ int	push(t_storage *stack_a, t_storage *stack_b, char *c)
 	}
 	stack_b->tab[0] = stack_a->tab[0];
 	stack_b->size++;
-
 	i = 0;
 	while (i < stack_a->size - 1)
 	{

@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:26:47 by dev               #+#    #+#             */
-/*   Updated: 2023/05/17 17:11:28 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/17 18:56:35 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
 #include "../libft/libft.h"
+#include "../push_swap.h"
 
-void cpy_int(int *sorted, t_storage *a)
+void	cpy_int(int *sorted, t_storage *a)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < a->size)
 	{
 		sorted[i] = a->tab[i];
 		i++;
 	}
-	
 }
 
 int	get_max(t_storage *a)
@@ -41,23 +42,24 @@ int	get_max(t_storage *a)
 	return (max);
 }
 
-int len_mf(char *mf)
+int	len_mf(char *mf)
 {
-	int i = 0;
-	char **split_mf = ft_split(mf, ' ');
+	int		i;
+	char	**split_mf;
 
+	i = 0;
+	split_mf = ft_split(mf, ' ');
 	while (split_mf[i])
 		i++;
-	
 	ft_free_chartable(split_mf);
-	return (i);	
+	return (i);
 }
 
 void	hash_array(t_storage *a, int *temp)
 {
-	int		i;
-	int		j;
-	int		position;
+	int	i;
+	int	j;
+	int	position;
 
 	i = -1;
 	while (++i < a->size)

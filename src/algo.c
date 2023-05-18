@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:38:29 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/16 17:02:39 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/17 20:23:28 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ int	sort5(t_storage *stack_a)
 	int	small;
 	int	stack;
 	t_storage stack_b = {0};
-
+	
+	int i = 2;
 	stack = 0;
 	while (stack_b.size != 2)
 	{
 		small = smallest(stack_a->tab, 0, stack_a->size);
 		while (stack_a->tab[0] != small)
-			stack += rotate(stack_a->tab, stack_a->size, "ra\n");
+		{
+			if(i <= stack_a->size / 2)
+				stack += rotate(stack_a->tab, stack_a->size, "ra\n");
+			else 
+				stack += rev_rotate(stack_a->tab,stack_a->size,"rra\n");
+		}
 		stack += push(stack_a, &stack_b, "pb\n");
 	}
 	stack += sort3(stack_a->tab);
