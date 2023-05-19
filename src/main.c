@@ -6,7 +6,7 @@
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:58 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/18 17:16:03 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:05:41 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	check_error2(char **str)
 		}
 		i++;
 	}
-	if(i < 2)
-			return (1);
+	if (i < 2)
+		return (1);
 	return (0);
 }
 
@@ -119,17 +119,5 @@ int	main(int ac, char **av)
 
 	if (ft_is_sorted(storage_a.tab, storage_a.size))
 		return (1);
-
-	if (storage_a.size == 2)
-		sort2(storage_a.tab);
-	else if (storage_a.size == 3)
-		sort3(storage_a.tab);
-	else if (storage_a.size == 4)
-		sort4(&storage_a);
-	else if (storage_a.size == 5)
-		sort5(&storage_a);
-	else if (storage_a.size <= 101)
-		sort_chunk(sorted_array, &storage_a, 5);
-	else
-		sort_chunk(sorted_array, &storage_a, 11);
+	algo_choice(storage_a,sorted_array);
 }

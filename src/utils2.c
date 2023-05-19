@@ -6,7 +6,7 @@
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:26:47 by dev               #+#    #+#             */
-/*   Updated: 2023/05/17 18:56:35 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:06:48 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,20 @@ void	hash_array(t_storage *a, int *temp)
 		}
 		a->tab[i] = position;
 	}
+}
+
+void	algo_choice(t_storage storage_a, int *sorted_array)
+{
+	if (storage_a.size == 2)
+		sort2(storage_a.tab);
+	else if (storage_a.size == 3)
+		sort3(storage_a.tab);
+	else if (storage_a.size == 4)
+		sort4(&storage_a);
+	else if (storage_a.size == 5)
+		sort5(&storage_a);
+	else if (storage_a.size <= 101)
+		sort_chunk(sorted_array, &storage_a, 5);
+	else
+		sort_chunk(sorted_array, &storage_a, 11);
 }

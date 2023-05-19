@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dev <dev@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:28 by dev               #+#    #+#             */
-/*   Updated: 2023/05/17 17:09:47 by dev              ###   ########.fr       */
+/*   Updated: 2023/05/18 21:05:07 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_storage
 	int	size;
 	int	tab[500];
 	int	max;
+	int *sorted_tab;
 }		t_storage;
 
 void	ft_putstr(char *str);
@@ -33,6 +34,7 @@ void cpy_int(int *sorted, t_storage *a);
 int len_mf(char *mf);
 int	get_max(t_storage *a);
 void	hash_array(t_storage *a, int *temp);
+void algo_choice(t_storage storage_a, int *sorted_array);
 
 //moves
 int		rotate(int *tab, int ac, char *c);
