@@ -6,7 +6,7 @@
 /*   By: dwawzyni <dwawzyni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:58 by dwawzyni          #+#    #+#             */
-/*   Updated: 2023/05/18 21:05:41 by dwawzyni         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:40:40 by dwawzyni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,52 +72,43 @@ int	check_error(char **av, int ac, int temp_a[500])
 	int		result;
 
 	result = 0;
-	i = 0;
+	i = -1;
 	if (ac == 2)
 	{
 		temp = ft_split(av[1], ' ');
-		while (temp[i])
-		{
+		while (temp[++i])
 			temp_a[i] = ft_atoi(temp[i]);
-			i++;
-		}
 		result = check_error2(temp);
 		ft_free_chartable(temp);
 		return (result);
 	}
 	else
 	{
-		while (av[i + 1])
-		{
+		while (av[++i + 1])
 			temp_a[i] = ft_atoi(av[i + 1]);
-			i++;
-		}
 		return (check_error2(av + 1));
 	}
 }
 
 int	main(int ac, char **av)
 {
-	static int sorted_array[500] = {0};
-	static int temp_a[500] = {0};
-	t_storage storage_a;
+	static int	sorted_array[500] = {0};
+	static int	temp_a[500] = {0};
+	t_storage	storage_a;
 
 	if (ac < 2)
 		return (0);
-
 	ft_memset(&storage_a, 0, sizeof(storage_a));
-
 	if (check_error(av, ac, temp_a))
 		return (0);
-
-	storage_a.size = (ac > 2) ? ac - 1 : len_mf(av[1]);
-
+	if (ac > 2)
+		storage_a.size = ac - 1;
+	else
+		storage_a.size = len_mf(av[1]);
 	hash_array(&storage_a, temp_a);
-
 	cpy_int(sorted_array, &storage_a);
 	bubble_sort(sorted_array, storage_a.size);
-
 	if (ft_is_sorted(storage_a.tab, storage_a.size))
 		return (1);
-	algo_choice(storage_a,sorted_array);
+	algo_choice(storage_a, sorted_array);
 }
